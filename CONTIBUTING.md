@@ -1,17 +1,8 @@
-# tileengine-rs [![Build Status](https://travis-ci.org/Vinatorul/tileengine-rs.svg)](https://travis-ci.org/Vinatorul/tileengine-rs) [![Coverage Status](https://coveralls.io/repos/Vinatorul/tileengine-rs/badge.svg?branch=master&service=github)](https://coveralls.io/github/Vinatorul/tileengine-rs?branch=master)
+# How to Contribute
 
-Tile engine in Rust
+Contributions are always welcome! Please use the following guidelines when contributing to `tileengine`
 
-[Documentation](https://vinatorul.github.io/tileengine-rs/tile_engine)
-
-## License
-`tile_engine` is licensed under the MIT license. Please read the LICENSE file in this repository for more information.
-
-# [How to Contribute](https://github.com/Vinatorul/tileengine-rs/blob/master/CONTIBUTING.md)
-
-Contributions are always welcome! Please use the following guidelines when contributing to `tile_engine`
-
-1. Fork `tile_engine`
+1. Fork `tileengine`
 2. Clone your fork (`git clone https://github.com/$YOUR_USERNAME/tileengine-rs && cd tileengine-rs`)
 3. Create new branch (`git checkout -b new-branch`)
 4. Make your changes, and commit (`git commit -am "your message"`)
