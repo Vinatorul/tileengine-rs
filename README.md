@@ -1,4 +1,4 @@
-# tileengine-rs [![Build Status](https://travis-ci.org/Vinatorul/tileengine-rs.svg)](https://travis-ci.org/Vinatorul/tileengine-rs) [![Coverage Status](https://coveralls.io/repos/Vinatorul/tileengine-rs/badge.svg?branch=master&service=github)](https://coveralls.io/github/Vinatorul/tileengine-rs?branch=master)
+# tileengine-rs [![Build Status](https://travis-ci.org/Vinatorul/tileengine-rs.svg?branch=master)](https://travis-ci.org/Vinatorul/tileengine-rs) [![Coverage Status](https://coveralls.io/repos/Vinatorul/tileengine-rs/badge.svg?branch=master&service=github)](https://coveralls.io/github/Vinatorul/tileengine-rs?branch=master) [![](http://meritbadge.herokuapp.com/tile_engine)](https://crates.io/crates/tile_engine) [![license](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Vinatorul/tileengine-rs/blob/master/LICENSE)
 
 Tile engine in Rust
 
