@@ -11,3 +11,6 @@ documentation = "https://vinatorul.github.io/tileengine-rs/tile_engine"
 
 [features]
 unstable = []
+
+[dependencies]
+xml-rs = "~0.1"
