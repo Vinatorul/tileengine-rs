@@ -8,9 +8,3 @@ readme = "README.md"
 repository = "https://github.com/Vinatorul/tileengine-rs"
 homepage = "https://github.com/Vinatorul/tileengine-rs"
 documentation = "https://vinatorul.github.io/tileengine-rs/tile_engine"
-
-[features]
-unstable = []
-
-[dependencies]
-xml-rs = "~0.1"
