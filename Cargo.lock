@@ -1,20 +1,4 @@
 [root]
 name = "tile_engine"
 version = "0.1.0"
-dependencies = [
- "xml-rs 0.1.26 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
-name = "bitflags"
-version = "0.3.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-
-[[package]]
-name = "xml-rs"
-version = "0.1.26"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-dependencies = [
- "bitflags 0.3.2 (registry+https://github.com/rust-lang/crates.io-index)",
-]
 
