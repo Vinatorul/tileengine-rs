@@ -2,17 +2,12 @@ use layer::TilesLayer;
 use std::collections::HashMap;
 use tile::TileRect;
 
+#[derive(Default)]
 pub struct TileEngine {
     layers: HashMap<i32, TilesLayer>,
 }
 
 impl TileEngine {
-    pub fn new() -> TileEngine {
-        TileEngine {
-            layers: HashMap::<i32, TilesLayer>::new(),
-        }
-    }
-
     pub fn add_tile(&mut self, x: f64, y: f64, w: i32, h: i32, layer_ind: i32) {
         if let Some(l) = self.layers.get_mut(&layer_ind) {
             l.add_tile(x, y, w, h);

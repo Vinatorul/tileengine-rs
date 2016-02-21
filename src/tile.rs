@@ -2,7 +2,7 @@ pub type TileRect = [i32; 4];
 
 // Tile coodinates in a chunk
 pub struct Tile {
-    x: i32, 
+    x: i32,
     y: i32,
     width: i32,
     height: i32,
