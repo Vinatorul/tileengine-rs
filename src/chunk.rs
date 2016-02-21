@@ -23,7 +23,7 @@ impl Chunk {
 
     pub fn add_tile(&mut self, x: i32, y: i32, w: i32, h: i32) {
         self.tiles.push(Tile::new(x - self.x, y - self.y, w, h));
-    } 
+    }
 
     pub fn get_tiles(&self) -> Vec<TileRect> {
         let mut result = vec![];
