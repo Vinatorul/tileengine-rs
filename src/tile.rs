@@ -18,7 +18,7 @@ impl Tile {
         }
     }
 
-    pub fn rect(&self) -> TileRect {
-        [self.x, self.y, self.width, self.height]
+    pub fn rect(&self, x_offset: i32, y_offset: i32) -> TileRect {
+        [self.x + x_offset, self.y + y_offset, self.width, self.height]
     }
 }

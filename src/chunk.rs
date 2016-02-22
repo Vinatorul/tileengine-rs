@@ -28,7 +28,7 @@ impl Chunk {
     pub fn get_tiles(&self) -> Vec<TileRect> {
         let mut result = vec![];
         for tile in self.tiles.iter() {
-            result.push(tile.rect())
+            result.push(tile.rect(self.x, self.y));
         }
         result
     }
