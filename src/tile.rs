@@ -9,12 +9,12 @@ pub enum TileType {
 // Tile coodinates in a chunk
 #[derive(Debug, PartialEq, Eq, Clone, Copy)]
 pub struct Tile {
-    x: i32,
-    y: i32,
-    width: u32,
-    height: u32,
-    tile_type: TileType,
-    texture_ind: i32,
+    pub x: i32,
+    pub y: i32,
+    pub width: u32,
+    pub height: u32,
+    pub tile_type: TileType,
+    pub texture_ind: i32,
 }
 
 impl Tile {
