@@ -1,17 +1,17 @@
-use tile::{Tile, TileType};
+use tile::Tile;
 
 // Chunk coordinates in a layer
-pub struct Chunk {
+pub struct Chunk<T> {
     pub x: i32,
     pub y: i32,
     pub width: u32,
     pub height: u32,
-    pub tiles: Vec<Tile>,
+    pub tiles: Vec<Tile<T>>,
 }
 
 
-impl Chunk {
-    pub fn new(x: i32, y: i32, w: u32, h: u32) -> Chunk {
+impl<T> Chunk<T> {
+    pub fn new(x: i32, y: i32, w: u32, h: u32) -> Chunk<T> {
         Chunk {
             x: x,
             y: y,
@@ -21,11 +21,11 @@ impl Chunk {
         }
     }
 
-    pub fn add_tile(&mut self, x: i32, y: i32, w: u32, h: u32, tile_type: TileType, texture_ind: i32) {
-        self.tiles.push(Tile::new(x, y, w, h, tile_type, texture_ind));
+    pub fn add_tile(&mut self, x: i32, y: i32, w: u32, h: u32, tile_info: T) {
+        self.tiles.push(Tile::new(x, y, w, h, tile_info));
     }
 
-    pub fn get_tiles<'a>(&'a self, tiles: &mut Vec<&'a Tile>) {
+    pub fn get_tiles<'a>(&'a self, tiles: &mut Vec<&'a Tile<T>>) {
         for tile in self.tiles.iter() {
             tiles.push(&tile);
         }

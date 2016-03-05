@@ -1,21 +1,21 @@
-use tile::TileType;
 use chunk::Chunk;
+use tile::Tile;
 
 const DEF_CHUNK_WIDTH: i32 = 100;
 const DEF_CHUNK_HEIGHT: i32 = 100;
 
-pub struct TilesLayer {
+pub struct TilesLayer<T> {
     x_offset: i32,
     y_offset: i32,
-    chunks: Vec<Chunk>,
+    chunks: Vec<Chunk<T>>,
 }
 
-impl TilesLayer {
-    pub fn new() -> TilesLayer {
+impl<T> TilesLayer<T> {
+    pub fn new() -> TilesLayer<T> {
         TilesLayer {
             x_offset: 0,
             y_offset: 0,
-            chunks: Vec::<Chunk>::new(),
+            chunks: Vec::<Chunk<T>>::new(),
         }
     }
 
@@ -29,28 +29,29 @@ impl TilesLayer {
         y - self.y_offset
     }
 
-    pub fn add_tile(&mut self, x: i32, y: i32, w: u32, h: u32, tile_type: TileType, texture_ind: i32) {
-        let mut chunk_exists = false;
+    pub fn add_tile(&mut self, x: i32, y: i32, w: u32, h: u32, tile_info: T) {
+        let mut chunk_ind: i32 = -1;
         let rel_x = self.get_rel_x(x);
         let rel_y = self.get_rel_y(y);
-        for chunk in self.chunks.iter_mut() {
+        for i in 0..self.chunks.len() {
+            let chunk = &self.chunks[i];
             if (rel_x > chunk.x) && (rel_x < chunk.x + chunk.width as i32) &&
                (rel_y > chunk.y) && (rel_y < chunk.y + chunk.height as i32) {
-                chunk_exists = true;
-                chunk.add_tile(rel_x, rel_y, w, h, tile_type, texture_ind);
+                chunk_ind = i as i32;
                 break;
             }
         }
-        if !chunk_exists {
+        if chunk_ind < 0 {
             self.chunks.push(Chunk::new((rel_x/DEF_CHUNK_WIDTH)*DEF_CHUNK_WIDTH,
                                         (rel_y/DEF_CHUNK_HEIGHT)*DEF_CHUNK_HEIGHT,
                                         DEF_CHUNK_WIDTH as u32,
                                         DEF_CHUNK_HEIGHT as u32));
-            self.chunks.last_mut().unwrap().add_tile(rel_x, rel_y, w, h, tile_type, texture_ind);
+            chunk_ind = (self.chunks.len()-1) as i32;
         }
+        self.chunks[chunk_ind as usize].add_tile(rel_x, rel_y, w, h, tile_info);
     }
 
-    pub fn get_tiles(&self, cam_x: f64, cam_y: f64, cam_w: i32, cam_h: i32) -> Vec<&::tile::Tile> {
+    pub fn get_tiles(&self, cam_x: f64, cam_y: f64, cam_w: i32, cam_h: i32) -> Vec<&Tile<T>> {
         let rel_x = self.get_rel_x(cam_x as i32);
         let rel_y = self.get_rel_y(cam_y as i32);
         let mut result = vec![];
