@@ -7,7 +7,7 @@ mod chunk;
 mod layer;
 
 pub use core::TileEngine;
-pub use tile::TileRect;
+pub use tile::{Tile, TileType};
 
 #[cfg(test)]
-mod tests; 
+mod tests;
