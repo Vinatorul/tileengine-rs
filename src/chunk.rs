@@ -1,4 +1,5 @@
 use tile::Tile;
+use std::collections::HashMap;
 
 // Chunk coordinates in a layer
 pub struct Chunk<T> {
@@ -25,9 +26,9 @@ impl<T> Chunk<T> {
         self.tiles.push(Tile::new(x, y, w, h, tile_info));
     }
 
-    pub fn get_tiles<'a>(&'a self, tiles: &mut Vec<&'a Tile<T>>) {
+    pub fn get_tiles<'a>(&'a self, tiles: &mut HashMap<(i32, i32), &'a Tile<T>>) {
         for tile in self.tiles.iter() {
-            tiles.push(&tile);
+            tiles.insert((tile.x, tile.y) ,&tile);
         }
     }
 }
