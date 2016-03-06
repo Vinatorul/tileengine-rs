@@ -17,7 +17,7 @@ impl<T> TileEngine<T> {
         self.add_tile(x, y, w, h, layer_ind, tile_info);
     }
 
-    pub fn get_tiles(&self, cam_x: f64, cam_y: f64, cam_w: i32, cam_h: i32, layer_ind: i32) -> Vec<&Tile<T>> {
+    pub fn get_tiles(&self, cam_x: f64, cam_y: f64, cam_w: i32, cam_h: i32, layer_ind: i32) -> HashMap<(i32, i32), &Tile<T>> {
         let layer = self.layers.get(&layer_ind).unwrap_or_else(|| {panic!("Layer {} not found", layer_ind)});
         layer.get_tiles(cam_x, cam_y, cam_w, cam_h)
     }

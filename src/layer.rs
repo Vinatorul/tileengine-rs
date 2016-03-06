@@ -1,5 +1,6 @@
 use chunk::Chunk;
 use tile::Tile;
+use std::collections::HashMap;
 
 const DEF_CHUNK_WIDTH: i32 = 100;
 const DEF_CHUNK_HEIGHT: i32 = 100;
@@ -51,10 +52,10 @@ impl<T> TilesLayer<T> {
         self.chunks[chunk_ind as usize].add_tile(rel_x, rel_y, w, h, tile_info);
     }
 
-    pub fn get_tiles(&self, cam_x: f64, cam_y: f64, cam_w: i32, cam_h: i32) -> Vec<&Tile<T>> {
+    pub fn get_tiles(&self, cam_x: f64, cam_y: f64, cam_w: i32, cam_h: i32) -> HashMap<(i32, i32,), &Tile<T>> {
         let rel_x = self.get_rel_x(cam_x as i32);
         let rel_y = self.get_rel_y(cam_y as i32);
-        let mut result = vec![];
+        let mut result = HashMap::<(i32, i32), &Tile<T>>::new();
         for chunk in self.chunks.iter() {
             if (rel_x + cam_w > chunk.x) && (rel_x < chunk.x + chunk.width as i32) &&
                (rel_y + cam_h > chunk.y) && (rel_y < chunk.y + chunk.height as i32) {
