@@ -64,4 +64,15 @@ impl<T> TilesLayer<T> {
         }
         result
     }
+
+    pub fn tile_at(&self, x: i32, y: i32) -> Option<&Tile<T>> {
+        for i in 0..self.chunks.len() {
+            let chunk = &self.chunks[i];
+            if (x > chunk.x) && (x < chunk.x + chunk.width as i32) &&
+               (y > chunk.y) && (y < chunk.y + chunk.height as i32) {
+                return chunk.tile_at(x, y);
+            }
+        }
+        None
+    }
 }
