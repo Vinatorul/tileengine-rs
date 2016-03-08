@@ -36,8 +36,8 @@ impl<T> TilesLayer<T> {
         let rel_y = self.get_rel_y(y);
         for i in 0..self.chunks.len() {
             let chunk = &self.chunks[i];
-            if (rel_x > chunk.x) && (rel_x < chunk.x + chunk.width as i32) &&
-               (rel_y > chunk.y) && (rel_y < chunk.y + chunk.height as i32) {
+            if (rel_x >= chunk.x) && (rel_x < chunk.x + chunk.width as i32) &&
+               (rel_y >= chunk.y) && (rel_y < chunk.y + chunk.height as i32) {
                 chunk_ind = i as i32;
                 break;
             }
@@ -57,8 +57,8 @@ impl<T> TilesLayer<T> {
         let rel_y = self.get_rel_y(cam_y as i32);
         let mut result = HashMap::<(i32, i32), &Tile<T>>::new();
         for chunk in self.chunks.iter() {
-            if (rel_x + cam_w > chunk.x) && (rel_x < chunk.x + chunk.width as i32) &&
-               (rel_y + cam_h > chunk.y) && (rel_y < chunk.y + chunk.height as i32) {
+            if (rel_x + cam_w >= chunk.x) && (rel_x < chunk.x + chunk.width as i32) &&
+               (rel_y + cam_h >= chunk.y) && (rel_y < chunk.y + chunk.height as i32) {
                 chunk.get_tiles(&mut result);
             }
         }
@@ -68,8 +68,8 @@ impl<T> TilesLayer<T> {
     pub fn tile_at(&self, x: i32, y: i32) -> Option<&Tile<T>> {
         for i in 0..self.chunks.len() {
             let chunk = &self.chunks[i];
-            if (x > chunk.x) && (x < chunk.x + chunk.width as i32) &&
-               (y > chunk.y) && (y < chunk.y + chunk.height as i32) {
+            if (x >= chunk.x) && (x < chunk.x + chunk.width as i32) &&
+               (y >= chunk.y) && (y < chunk.y + chunk.height as i32) {
                 return chunk.tile_at(x, y);
             }
         }
