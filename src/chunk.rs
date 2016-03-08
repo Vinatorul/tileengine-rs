@@ -31,4 +31,13 @@ impl<T> Chunk<T> {
             tiles.insert((tile.x, tile.y) ,&tile);
         }
     }
+
+    pub fn tile_at(&self, x: i32, y: i32) -> Option<&Tile<T>> {
+        for tile in self.tiles.iter() {
+            if (tile.x == x) && (tile.y == y) {
+                return Some(&tile);
+            }
+        }
+        None
+    }
 }
